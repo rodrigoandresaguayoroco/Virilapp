@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 20% 98%;
+    --foreground: 220 20% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 20% 10%;
+    --primary: 240 40% 20%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 30% 90%;
+    --secondary-foreground: 220 40% 20%;
+    --muted: 220 30% 95%;
+    --muted-foreground: 220 20% 40%;
+    --accent: 180 70% 70%;
+    --accent-foreground: 220 40% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 30% 85%;
+    --input: 220 30% 90%;
+    --ring: 240 40% 20%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 240 40% 5%;
+    --foreground: 0 0% 100%;
+    --card: 240 40% 8%;
+    --card-foreground: 0 0% 100%;
+    --popover: 240 40% 8%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 180 70% 70%;
+    --primary-foreground: 240 40% 10%;
+    --secondary: 240 40% 15%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 240 40% 12%;
+    --muted-foreground: 240 20% 80%;
+    --accent: 180 70% 70%;
+    --accent-foreground: 240 40% 10%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 240 40% 15%;
+    --input: 240 40% 20%;
+    --ring: 180 70% 70%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Inter", system-ui, sans-serif;
+  }
+}
+
+@layer utilities {
+  .gradient-viril {
+    background: linear-gradient(135deg, #101040 0%, #202050 50%, #303060 100%);
+  }
+  
+  .gradient-viril-accent {
+    background: linear-gradient(135deg, #70E0E0 0%, #202050 100%);
+  }
+  
+  .text-gradient {
+    background: linear-gradient(135deg, #70E0E0, #FFFFFF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(16, 16, 64, 0.3);
+  }
+}
