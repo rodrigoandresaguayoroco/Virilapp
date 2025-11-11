@@ -2,22 +2,22 @@
 
 import { motion } from 'framer-motion'
 
-const particles = Array.from({ length: 20 }).map((_, i) => ({
+const particles = Array.from({ length: 15 }).map((_, i) => ({
   id: i,
   x: Math.random() * 100,
   y: Math.random() * 100,
-  size: Math.random() * 4 + 1,
-  duration: 10 + Math.random() * 10,
+  size: Math.random() * 3 + 1,
+  duration: 15 + Math.random() * 10,
   delay: Math.random() * 5,
 }))
 
 export default function Particles() {
   return (
-    <div className="fixed inset-0 pointer-events-none z-0">
+    <div className="particles-apple">
       {particles.map((p) => (
         <motion.div
           key={p.id}
-          className="absolute rounded-full bg-viril-400/30"
+          className="absolute rounded-full bg-teal-400/20"
           style={{
             left: `${p.x}%`,
             top: `${p.y}%`,
@@ -25,15 +25,15 @@ export default function Particles() {
             height: p.size,
           }}
           animate={{
-            x: [0, 50, -50, 0],
-            y: [0, -100, 50, 0],
-            opacity: [0, 1, 0],
+            x: [0, 30, -30, 0],
+            y: [0, -50, 50, 0],
+            opacity: [0, 0.8, 0],
           }}
           transition={{
             duration: p.duration,
             repeat: Infinity,
             delay: p.delay,
-            ease: "linear",
+            ease: "easeInOut",
           }}
         />
       ))}

@@ -7,19 +7,19 @@ export default function Cursor() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
   const [isHovering, setIsHovering] = useState(false)
   
-  const cursorX = useSpring(0, { stiffness: 300, damping: 30 })
-  const cursorY = useSpring(0, { stiffness: 300, damping: 30 })
+  const cursorX = useSpring(0, { stiffness: 500, damping: 28 })
+  const cursorY = useSpring(0, { stiffness: 500, damping: 28 })
 
   useEffect(() => {
     const moveCursor = (e: MouseEvent) => {
       setMousePos({ x: e.clientX, y: e.clientY })
-      cursorX.set(e.clientX - 16)
-      cursorY.set(e.clientY - 16)
+      cursorX.set(e.clientX - 12)
+      cursorY.set(e.clientY - 12)
     }
 
     const handleMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement
-      const isInteractive = target.closest('button, a, .cursor-interactive')
+      const isInteractive = target.closest('.cursor-interactive')
       setIsHovering(!!isInteractive)
     }
 
@@ -39,7 +39,7 @@ export default function Cursor() {
       }`}
       style={{ x: cursorX, y: cursorY }}
     >
-      <div className="w-8 h-8 border-2 border-viril-400 rounded-full" />
+      <div className="w-6 h-6 border-2 border-teal-400 rounded-full" />
     </motion.div>
   )
 }

@@ -1,177 +1,136 @@
-/* ===== VIRIL ACADEMY - CSS CINEMATOGRÁFICO ===== */
+/* ===== APPLE VISION PRO STYLE - CSS EXACTO ===== */
 
-/* Reset & Base */
+:root {
+  --viril-teal: #64D2D2;
+  --viril-deep: #1a1a2e;
+  --glass-white: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --apple-gray: #a0a0a0;
+}
+
 * { margin: 0; padding: 0; box-sizing: border-box; }
+
 body {
-  background: #101010;
-  color: #ffffff;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background: radial-gradient(ellipse at 20% 20%, var(--viril-deep) 0%, #0a0a0a 70%);
+  color: #f5f5f7;
+  font-family: 'Spline Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
 
-ul, ol { list-style: none; }
-
-/* Variables */
-:root {
-  --viril-400: #70E0E0;
-  --viril-700: #303060;
-  --viril-950: #101040;
-  --gray-400: #9CA3AF;
-  --gray-700: #374151;
+/* Apple Glass Cards */
+.glass-card-apple {
+  background: var(--glass-white);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  border: 1px solid var(--glass-border);
+  border-radius: 32px;
+  padding: 4rem;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  transform-style: preserve-3d;
+  cursor: pointer;
 }
 
-/* Animations */
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
+.glass-card-apple:hover {
+  transform: perspective(1000px) rotateX(2deg) translateZ(20px);
+  box-shadow: 0 50px 100px rgba(100, 210, 210, 0.15);
+  border-color: rgba(100, 210, 210, 0.3);
 }
 
-@keyframes glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(112, 224, 224, 0.3); }
-  50% { box-shadow: 0 0 40px rgba(112, 224, 224, 0.6); }
-}
-
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(100px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* Utility Classes */
-.container { max-width: 1440px; margin: 0 auto; padding: 0 2rem; }
-.relative { position: relative; }
-.absolute { position: absolute; }
-.fixed { position: fixed; }
-.inset-0 { top: 0; right: 0; bottom: 0; left: 0; }
-.z-10 { z-index: 10; }
-.z-50 { z-index: 50; }
-.pointer-events-none { pointer-events: none; }
-.pointer-events-auto { pointer-events: auto; }
-.min-h-screen { min-height: 100vh; }
-.w-full { width: 100%; }
-.h-full { height: 100%; }
-.flex { display: flex; }
-.items-center { align-items: center; }
-.justify-center { justify-content: center; }
-.justify-between { justify-content: space-between; }
-.flex-col { flex-direction: column; }
-.grid { display: grid; }
-.gap-8 { gap: 2rem; }
-.gap-12 { gap: 3rem; }
-.text-center { text-align: center; }
-.overflow-hidden { overflow: hidden; }
-.rounded-2xl { border-radius: 1rem; }
-.rounded-3xl { border-radius: 1.5rem; }
-.rounded-full { border-radius: 9999px; }
-.backdrop-blur-xl { backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
-.border { border: 1px solid; }
-.border-white-10 { border-color: rgba(255, 255, 255, 0.1); }
-.bg-white-5 { background: rgba(255, 255, 255, 0.05); }
-.bg-white-10 { background: rgba(255, 255, 255, 0.1); }
-.text-white { color: #ffffff; }
-.text-gray-300 { color: #d1d5db; }
-.text-gray-400 { color: var(--gray-400); }
-.text-viril-400 { color: var(--viril-400); }
-
-/* Typography */
-.text-8xl { font-size: 6rem; line-height: 1; font-weight: 900; }
-.text-7xl { font-size: 5rem; line-height: 1; font-weight: 900; }
-.text-6xl { font-size: 3.75rem; line-height: 1; font-weight: 900; }
-.text-5xl { font-size: 3rem; line-height: 1; font-weight: 900; }
-.text-4xl { font-size: 2.25rem; line-height: 1; font-weight: 900; }
-.text-3xl { font-size: 1.875rem; line-height: 1; font-weight: 800; }
-.text-2xl { font-size: 1.5rem; line-height: 1; font-weight: 700; }
-.text-xl { font-size: 1.25rem; line-height: 1.75rem; }
-.text-lg { font-size: 1.125rem; line-height: 1.75rem; }
-.text-sm { font-size: 0.875rem; line-height: 1.25rem; }
-.font-black { font-weight: 900; }
-.font-bold { font-weight: 700; }
-.font-semibold { font-weight: 600; }
-
-/* Spacing */
-.mb-4 { margin-bottom: 1rem; }
-.mb-6 { margin-bottom: 1.5rem; }
-.mb-8 { margin-bottom: 2rem; }
-.mb-12 { margin-bottom: 3rem; }
-.mb-16 { margin-bottom: 4rem; }
-.mb-32 { margin-bottom: 8rem; }
-.mt-6 { margin-top: 1.5rem; }
-.mt-8 { margin-top: 2rem; }
-.mt-12 { margin-top: 3rem; }
-.mt-20 { margin-top: 5rem; }
-.mt-32 { margin-top: 8rem; }
-.p-6 { padding: 1.5rem; }
-.p-8 { padding: 2rem; }
-.p-12 { padding: 3rem; }
-.p-16 { padding: 4rem; }
-.px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
-.px-12 { padding-left: 3rem; padding-right: 3rem; }
-.py-6 { padding-top: 1.5rem; padding-bottom: 1.5rem; }
-.py-12 { padding-top: 3rem; padding-bottom: 3rem; }
-.py-24 { padding-top: 6rem; padding-bottom: 6rem; }
-
-/* Grid */
-.grid-3 { grid-template-columns: repeat(3, 1fr); }
-@media (min-width: 768px) {
-  .md\:grid-3 { grid-template-columns: repeat(3, 1fr); }
-}
-
-/* Glassmorphism */
-.glass-card {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 1.5rem;
-  padding: 3rem;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-.glass-card:hover {
-  transform: translateY(-10px) scale(1.02);
-  box-shadow: 0 25px 50px rgba(112, 224, 224, 0.15);
-}
-
-/* Gradient Text */
-.gradient-text {
-  background: linear-gradient(45deg, var(--viril-400), var(--viril-700));
-  background-size: 200% 200%;
-  animation: gradientShift 4s ease infinite;
+/* Apple Typography */
+.hero-title {
+  font-size: clamp(4rem, 12vw, 10rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  background: linear-gradient(180deg, #ffffff 0%, var(--viril-teal) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
-/* Buttons */
-.btn-premium {
-  position: relative;
-  padding: 1.5rem 3rem;
-  background: linear-gradient(45deg, var(--viril-400), var(--viril-700));
-  border-radius: 9999px;
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: var(--viril-950);
-  cursor: pointer;
-  overflow: hidden;
-  transition: all 0.3s ease;
-  border: none;
+.subtitle-apple {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 400;
+  color: var(--apple-gray);
+  max-width: 600px;
+  margin: 2rem auto;
 }
-.btn-premium::before {
+
+/* Apple Button */
+.btn-apple {
+  position: relative;
+  padding: 1.5rem 4rem;
+  background: linear-gradient(180deg, var(--viril-teal) 0%, #4a9e9e 100%);
+  border-radius: 9999px;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #0a0a0a;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
+  transform-style: preserve-3d;
+  overflow: hidden;
+}
+
+.btn-apple::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(255, 255, 255, 0.2);
-  transform: translateX(-100%);
-  transition: transform 0.3s ease;
+  background: linear-gradient(180deg, rgba(255,255,255,0.4) 0%, transparent 100%);
+  border-radius: 9999px;
+  opacity: 0;
+  transition: opacity 0.3s;
 }
-.btn-premium:hover::before {
-  transform: translateX(0);
+
+.btn-apple:hover {
+  transform: scale(1.05) translateZ(10px);
+  box-shadow: 0 20px 50px rgba(100, 210, 210, 0.4);
 }
-.btn-premium:hover {
-  transform: scale(1.1);
-  box-shadow: 0 10px 30px rgba(112, 224, 224, 0.3);
+
+.btn-apple:hover::before {
+  opacity: 1;
+}
+
+/* Apple Grid */
+.apple-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 3rem;
+  padding: 0 5%;
+  margin-top: 8rem;
+}
+
+/* Particles Apple */
+.particles-apple {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.2;
+}
+
+/* Modal Apple */
+.modal-apple {
+  background: var(--glass-white);
+  backdrop-filter: blur(40px);
+  border: 1px solid var(--glass-border);
+  border-radius: 32px;
+  padding: 4rem;
+  max-width: 800px;
+  width: 90%;
+}
+
+/* Responsive Apple */
+@media (max-width: 768px) {
+  .apple-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 0 1rem;
+  }
+  .glass-card-apple {
+    padding: 2rem;
+  }
+  .hero-title {
+    font-size: clamp(3rem, 10vw, 6rem);
+  }
 }
