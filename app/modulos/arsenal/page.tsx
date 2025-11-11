@@ -1,5 +1,6 @@
 'use client'
-
+// app/modulos/arsenal/page.tsx
+export const dynamic = 'force-dynamic'
 import { useState, useEffect } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { Button } from '@/components/ui/button'
