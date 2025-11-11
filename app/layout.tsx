@@ -1,16 +1,9 @@
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 import './globals.css'
-import { AuthProvider } from '@/components/auth-provider'
+import { Providers } from './providers'
 
-const inter = Inter({ subsets: ['latin'] })
-
-export const metadata: Metadata = {
-  title: 'VIRIL - Potenciador de Testosterona',
-  description: 'Aplicación privada para clientes VIRIL con módulos interactivos de mejora personal',
-  keywords: 'viril, testosterona, potenciador, salud masculina, rendimiento',
-  authors: [{ name: 'VIRIL Team' }],
-  viewport: 'width=device-width, initial-scale=1',
+export const metadata = {
+  title: 'VIRIL Academy - Contenido Exclusivo',
+  description: 'Potencia tu rendimiento con contenido premium para clientes VIRIL',
 }
 
 export default function RootLayout({
@@ -20,18 +13,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es" className="dark">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
-          rel="stylesheet"
-        />
-      </head>
-      <body className={`${inter.className} min-h-screen bg-gradient-to-br from-viril-900 via-viril-800 to-viril-700`}>
-        <AuthProvider>
-          {children}
-        </AuthProvider>
+      <body className="bg-[#101010] text-white min-h-screen">
+        <Providers>{children}</Providers>
       </body>
     </html>
   )
