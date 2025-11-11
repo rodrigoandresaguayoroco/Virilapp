@@ -1,9 +1,8 @@
-import './styles.css'
-import { Providers } from './providers'
+import './styles/globals.css'
 
 export const metadata = {
-  title: 'VIRIL Academy - Contenido Exclusivo',
-  description: 'Potencia tu rendimiento con contenido premium para clientes VIRIL',
+  title: 'VIRIL Academy - Elite Performance',
+  description: 'Métodos científicos para máximo rendimiento masculino',
 }
 
 export default function RootLayout({
@@ -12,10 +11,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="es" className="dark">
-      <body className="bg-[#101010] text-white min-h-screen">
-        <Providers>{children}</Providers>
-      </body>
+    <html lang="es">
+      <body>{children}</body>
     </html>
   )
 }
