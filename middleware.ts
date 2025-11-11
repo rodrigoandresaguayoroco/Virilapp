@@ -8,8 +8,8 @@ export function middleware(request: NextRequest) {
                          (typeof window !== 'undefined' && localStorage.getItem('viril-auth'))
 
   // Proteger rutas privadas
-  if (request.nextpathname.startsWith('/dashboard') || 
-      request.nextpathname.startsWith('/modulos')) {
+  if (request.nextUrl.pathname.startsWith('/dashboard') ||
+    request.nextUrl.pathname.startsWith('/modulos')) {
     if (!isAuthenticated) {
       return NextResponse.redirect(new URL('/login', request.url))
     }
