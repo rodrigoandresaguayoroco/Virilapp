@@ -4,9 +4,8 @@ import Cursor from '@/components/cursor'
 
 const spline = Spline_Sans({ 
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '800'],
+  weight: ['400', '500', '600', '700'], // Elimina 800
 })
-
 export const metadata = {
   title: 'VIRIL Academy',
   description: 'Métodos científicos para máximo rendimiento masculino',
