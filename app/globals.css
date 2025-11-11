@@ -3,7 +3,13 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
+  body {
+    @apply bg-[#101010] text-white;
+  }
+}  :root {
+--viril-400: #70E0E0;
+  --viril-700: #303060;
+  --viril-950: #101040;
     --background: 220 20% 98%;
     --foreground: 220 20% 10%;
     --card: 0 0% 100%;
