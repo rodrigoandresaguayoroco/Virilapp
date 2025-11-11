@@ -3,6 +3,9 @@
 import { notFound } from 'next/navigation'
 import { arsenalData, acondicionamientoData, dietaData } from '@/lib/modules-data'
 import { ScrollReveal } from '@/components/scroll-reveal'
+import { useState } from 'react' // ✅ FIX AQUÍ
+import { motion } from 'framer-motion'
+import { Button } from '@/components/ui/button'
 
 export default function ModuloPage({ params }: { params: { id: string } }) {
   const modules: Record<string, any> = {
@@ -16,7 +19,7 @@ export default function ModuloPage({ params }: { params: { id: string } }) {
 
   return (
     <div className="min-h-screen bg-[#101010] p-8 md:p-12">
-      <div className="container mx-auto">
+      <div className="container mx-auto max-w-7xl">
         {/* Header */}
         <ScrollReveal>
           <div className="text-center mb-20">
@@ -38,7 +41,6 @@ export default function ModuloPage({ params }: { params: { id: string } }) {
   )
 }
 
-// Componentes de contenido específicos
 function ArsenalContent({ data }: { data: any }) {
   return (
     <div className="space-y-16">
@@ -65,20 +67,22 @@ function ArsenalContent({ data }: { data: any }) {
               
               <div>
                 <h4 className="text-2xl font-bold mb-4">💡 TIP PRO</h4>
-                <p className="bg-viril-400/10 p-6 rounded-2xl border-l-4 border-viril-400 mb-6">
-                  {tactic.proTip}
-                </p>
+                <div className="bg-viril-400/10 p-6 rounded-2xl border-l-4 border-viril-400 mb-6">
+                  <p className="text-lg">{tactic.proTip}</p>
+                </div>
                 
                 <h4 className="text-2xl font-bold mb-4">🧬 CIENCIA</h4>
-                <p className="bg-blue-500/10 p-6 rounded-2xl border-l-4 border-blue-400">
-                  {tactic.science}
-                </p>
+                <div className="bg-blue-500/10 p-6 rounded-2xl border-l-4 border-blue-400">
+                  <p className="text-lg">{tactic.science}</p>
+                </div>
               </div>
             </div>
             
-            <button className="btn-premium mt-8 w-full">
-              Marcar como Dominada →
-            </button>
+            <div className="mt-8 pt-6 border-t border-white/10">
+              <Button className="w-full bg-white/10 hover:bg-viril-400 hover:text-viril-950 transition-all">
+                ✅ Marcar como Dominada
+              </Button>
+            </div>
           </div>
         </ScrollReveal>
       ))}
@@ -128,10 +132,10 @@ function AcondicionamientoContent({ data }: { data: any }) {
               
               <div>
                 <h4 className="text-2xl font-bold mb-4">⚠️ ADVERTENCIAS</h4>
-                <p className="bg-red-500/10 p-6 rounded-2xl border-l-4 border-red-400 text-red-200">
-                  {tech.warning}
-                </p>
-                <p className="text-gray-400 mt-4">
+                <div className="bg-red-500/10 p-6 rounded-2xl border-l-4 border-red-400 mb-6">
+                  <p className="text-lg text-red-200">{tech.warning}</p>
+                </div>
+                <p className="text-gray-400">
                   <strong>Frecuencia:</strong> {tech.frequency}
                 </p>
               </div>
@@ -175,11 +179,11 @@ function DietaContent({ data }: { data: any }) {
               <h3 className="text-4xl font-black mb-8 text-viril-400">{category.title}</h3>
               <div className="grid md:grid-cols-2 gap-6">
                 {category.foods.map((food: any, idx: number) => (
-                  <div key={idx} className="bg-white/5 p-6 rounded-2xl border border-white/10">
+                  <div key={idx} className="bg-white/5 p-6 rounded-2xl border border-white/10 hover:border-viril-400/30 transition-all">
                     <h4 className="text-2xl font-bold mb-2">{food.name}</h4>
                     <p className="text-gray-300 mb-4">{food.description}</p>
                     <div className="flex flex-wrap gap-4 text-sm text-gray-400">
-                      <span><strong>Porción:</strong> {food.servings}</span>
+                      {food.servings && <span><strong>Porción:</strong> {food.servings}</span>}
                       {food.cooking && <span><strong>Preparación:</strong> {food.cooking}</span>}
                       {food.evidence && <span><strong>Evidencia:</strong> {food.evidence}</span>}
                       {food.benefit && <span><strong>Beneficio:</strong> {food.benefit}</span>}
@@ -214,9 +218,9 @@ function DietaContent({ data }: { data: any }) {
             <div>
               <h4 className="text-2xl font-bold mb-4">INSTRUCCIONES</h4>
               <p className="text-lg mb-4">{data.smoothie.instructions}</p>
-              <p className="bg-viril-400/20 p-4 rounded-2xl border-l-4 border-viril-400">
-                {data.smoothie.benefits}
-              </p>
+              <div className="bg-viril-400/20 p-4 rounded-2xl border-l-4 border-viril-400">
+                <p className="text-lg">{data.smoothie.benefits}</p>
+              </div>
             </div>
           </div>
         </div>
@@ -226,13 +230,13 @@ function DietaContent({ data }: { data: any }) {
       <ScrollReveal>
         <div className="glass-card border-red-400/30">
           <h3 className="text-4xl font-black mb-6 text-red-400">🚫 ALIMENTOS PROHIBIDOS</h3>
-          <ul className="grid md:grid-cols-2 gap-4">
+          <div className="grid md:grid-cols-2 gap-4">
             {data.forbidden.map((item: string, i: number) => (
-              <li key={i} className="text-xl bg-red-500/10 p-4 rounded-2xl border-l-4 border-red-400">
-                {item}
-              </li>
+              <div key={i} className="bg-red-500/10 p-4 rounded-2xl border-l-4 border-red-400">
+                <p className="text-xl">{item}</p>
+              </div>
             ))}
-          </ul>
+          </div>
         </div>
       </ScrollReveal>
     </div>
