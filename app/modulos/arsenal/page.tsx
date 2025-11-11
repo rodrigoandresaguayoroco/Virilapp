@@ -1,8 +1,8 @@
 'use client'
-// app/modulos/arsenal/page.tsx
-export const dynamic = 'force-dynamic'
-import { useState, useEffect } from 'react'
+
+import { Suspense } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
+import { useState, useEffect } from 'react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
@@ -128,7 +128,8 @@ const tactics: Tactic[] = [
   }
 ]
 
-export default function ArsenalPage() {
+// Componente cliente con todos los hooks
+function ArsenalContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const showTimer = searchParams.get('timer') === 'true'
@@ -358,5 +359,18 @@ export default function ArsenalPage() {
         </div>
       </main>
     </div>
+  )
+}
+
+// Componente principal con Suspense
+export default function ArsenalPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-white">Cargando Arsenal del Amante...</div>
+      </div>
+    }>
+      <ArsenalContent />
+    </Suspense>
   )
 }
